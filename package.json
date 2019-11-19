@@ -1,6 +1,6 @@
 {
   "name": "v-tables",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "一个完整的数据表格组件，包含头部常用按钮，搜索框，底部分页，行操作等。",
   "main": "lib/v-tables.umd.min.js",
   "scripts": {
