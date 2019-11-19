@@ -1,0 +1,105 @@
+.topbar {
+  overflow: hidden;
+
+  .actions {
+    padding: 10px 0;
+
+    .ivu-btn {
+      margin-right: 5px;
+    }
+  }
+
+  .search-con {
+    padding: 10px 0;
+
+    .search {
+      &-col {
+        display: inline-block;
+        width: 120px;
+      }
+
+      &-input {
+        display: inline-block;
+        width: 200px;
+        margin-left: 2px;
+      }
+
+      &-btn {
+        margin-left: 2px;
+      }
+    }
+  }
+}
+
+.ivu-table-wrapper {
+  .ivu-table.ivu-table-small {
+    .ivu-table-cell {
+      padding-left: 10px;
+      padding-right: 10px;
+
+      .actions {
+        font-size: 14px;
+
+        span {
+          display: inline-block;
+          margin: 0 10px;
+          cursor: pointer;
+          padding: 0 5px;
+
+          &:hover {
+            background: #fff;
+          }
+
+          .icon {
+            padding: 3px;
+            vertical-align: middle;
+          }
+
+          em {
+            display: inline-block;
+            font-style: normal;
+            line-height: 16px;
+            padding-left: 3px;
+          }
+        }
+
+        .ivu-poptip {
+          margin: 0 10px;
+          padding: 0 5px;
+          cursor: pointer;
+
+          .icon {
+            padding: 0px 2px;
+            vertical-align: middle;
+          }
+
+          em {
+            display: inline-block;
+            font-style: normal;
+            line-height: 16px;
+            padding-left: 3px;
+          }
+
+          &:hover {
+            background: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.footer {
+  overflow: hidden;
+  padding: 10px 0px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}

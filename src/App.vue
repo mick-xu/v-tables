@@ -1,23 +1,19 @@
-# v-tables
-一个完整的数据表格组件，包含头部按钮，搜索框，底部分页等。
+<template>
+<div id="app">
+    <v-tables :columns="columns" :value="tableData" @on-edit="handleEdit" @on-delete="handleDelete"></v-tables>
+</div>
+</template>
 
-### Installation
-```
-npm install v-tables
-# or
-yarn add v-tables
-```
-### Usage
-```
-import VTable from 'v-tables'
-import 'v-tables/lib/v-tables.css'
+<script>
+import VTables from "./components";
 
-components: {
-    VTable
-},
-data() {
-    return {
-        date: {
+export default {
+    name: 'home',
+    components: {
+        VTables
+    },
+    data() {
+        return {
             columns: [{
                     title: 'ID',
                     key: 'id',
@@ -48,21 +44,20 @@ data() {
                 phoneNumber: '15012005678'
             }]
         }
-    }
-},
-methods: {
-    handleEdit(params) {
-        console.log(params)
     },
-    handleDelete(params) {
-        console.log(params);
+    methods: {
+        handleEdit(params) {
+            console.log(params)
+        },
+        handleDelete(params) {
+            console.log(params);
+        },
     },
-},
-```
+}
+</script>
 
-```
-<template>
-  <v-tables :columns="columns" :value="tableData"></v-tables>
-</template>
-```
-
+<style lang="scss">
+#app {
+    margin: 16px;
+}
+</style>

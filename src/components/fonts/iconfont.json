@@ -1,0 +1,107 @@
+{
+  "id": "1517486",
+  "name": "表格",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "182213",
+      "name": "确定",
+      "font_class": "right",
+      "unicode": "e72a",
+      "unicode_decimal": 59178
+    },
+    {
+      "icon_id": "2166827",
+      "name": "新建",
+      "font_class": "create",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "2370973",
+      "name": "验证",
+      "font_class": "confirm",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "3050941",
+      "name": "导出",
+      "font_class": "export",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "5219600",
+      "name": "授权",
+      "font_class": "key",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "7027891",
+      "name": "授权",
+      "font_class": "authorize",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "7069775",
+      "name": "编辑",
+      "font_class": "edit",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "7774595",
+      "name": "复制",
+      "font_class": "copy",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "7814523",
+      "name": "错误",
+      "font_class": "wrong",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "7978431",
+      "name": "定位",
+      "font_class": "location",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "9046166",
+      "name": "sou-suo",
+      "font_class": "search",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "9157830",
+      "name": "删 除",
+      "font_class": "trash",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "9294924",
+      "name": "授权",
+      "font_class": "verify",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "10205381",
+      "name": "移除",
+      "font_class": "remove",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    }
+  ]
+}

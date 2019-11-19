@@ -1,0 +1,48 @@
+{
+  "name": "v-tables",
+  "version": "0.1.0",
+  "description": "基于 AntV G6 的流程图 Vue 组件",
+  "main": "lib/v-tables.umd.min.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "lib": "vue-cli-service build --target lib --name v-tables --dest lib src/components/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mick-xu/v-tables"
+  },
+  "keywords": [
+    "table,data table,viewui table"
+  ],
+  "author": "Mick Xu",
+  "license": "MIT",
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/mick-xu/v-tables/issues"
+  },
+  "homepage": "https://github.com/mick-xu/v-tables#readme",
+  "dependencies": {
+    "view-design": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-plugin-pwa": "^4.0.0",
+    "@vue/cli-plugin-unit-mocha": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-eslint": "^10.0.3",
+    "chai": "^4.1.2",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.10",
+    "core-js": "^3.3.2",
+    "vue": "^2.6.10"
+  }
+}
