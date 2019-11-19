@@ -9,11 +9,11 @@ yarn add v-tables
 ```
 ### Usage
 ```
-import VTable from 'v-tables'
+import Tables from 'v-tables'
 import 'v-tables/lib/v-tables.css'
 
 components: {
-    VTable
+    Tables
 },
 data() {
     return {
@@ -62,7 +62,7 @@ methods: {
 
 ```
 <template>
-  <v-tables :columns="columns" :value="tableData"></v-tables>
+  <Tables :columns="columns" :value="tableData"></Tables>
 </template>
 ```
 
