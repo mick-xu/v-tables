@@ -52,8 +52,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import url('./fonts/iconfont.css');
+<style lang="less">
 .tables-edit-outer {
     height: 100%;
 
@@ -75,7 +74,7 @@ export default {
             padding: 2px 5px;
             display: none;
             background: #fff;
-            border-radius: 3px;
+            border-radius: 0px;
         }
 
         &:hover {
@@ -88,15 +87,16 @@ export default {
     .tables-editting-con {
         .tables-editing-btn {
             padding: 2px 5px;
-            margin-left: 10px;
+            margin-left: 3px;
             background: #fff;
             display: inline-block;
             vertical-align: middle;
             border-radius: 3px;
+            border:1px solid #eee;
         }
 
         .tables-edit-input {
-            width: calc(100% - 80px);
+            width: ~"calc(100% - 80px)";
         }
     }
 }
