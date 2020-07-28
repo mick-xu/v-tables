@@ -13,7 +13,7 @@ class HttpRequest {
   }
   getInsideConfig() {
     const config = {
-      baseURL: `${this.baseUrl}/api`,
+      baseURL: `${this.baseUrl}`,
       headers: {
         'Authorization': `Bearer ${this.access_token}`,
       },
