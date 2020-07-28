@@ -3,16 +3,16 @@
     <div v-if="!isEditting" class="tables-edit-con">
         <span class="value-con">{{ value }}</span>
         <span v-if="editable" @click="startEdit" class="tables-edit-btn">
-            <Icon type="md-create"></Icon>
+            <Icons type="md-create" />
         </span>
     </div>
     <div v-else class="tables-editting-con">
         <Input :value="value" @input="handleInput" size="small" class="tables-edit-input" />
         <span @click="saveEdit" class="tables-editing-btn">
-            <Icon type="md-checkmark"></Icon>
+            <Icons type="md-checkmark" />
         </span>
         <span @click="canceltEdit" class="tables-editing-btn">
-            <Icon type="md-close"></Icon>
+            <Icons type="md-close" />
         </span>
     </div>
 </div>

@@ -13,17 +13,32 @@
             </Select>
             <Input @on-change="handleClear" clearable placeholder="输入关键字搜索" class="search-input" :size="size" v-model="searchValue" />
             <Button @click="handleSearch" class="search-btn" type="info" :size="size">
-                <ico type="ios-search" />&nbsp;搜索
+                <Icons type="ios-search" />&nbsp;搜索
             </Button>
         </div>
     </div>
-    <Table ref="tablesMain" :data="insideTableData" :columns="insideColumns" :stripe="stripe" :border="border" :show-header="showHeader" :width="width" :height="height" :loading="loading" :disabled-hover="disabledHover" :highlight-row="highlightRow" :row-class-name="rowClassName" :size="size" :row-key="rowKey" :no-data-text="noDataText" :no-filtered-data-text="noFilteredDataText" @on-current-change="onCurrentChange" @on-select="onSelect" @on-select-cancel="onSelectCancel" @on-select-all="onSelectAll" @on-selection-change="onSelectionChange" @on-sort-change="onSortChange" @on-filter-change="onFilterChange" @on-row-click="onRowClick" @on-row-dblclick="onRowDblclick" @on-expand="onExpand">
+    <Table ref="tablesMain" :data="insideTableData" :columns="insideColumns" :stripe="stripe" :border="border" :show-header="showHeader" :width="width" :height="height" :disabled-hover="disabledHover" :highlight-row="highlightRow" :row-class-name="rowClassName" :size="size" :row-key="rowKey" :no-data-text="noDataInfo" :no-filtered-data-text="noFilteredDataText" tooltip-theme="light" @on-current-change="onCurrentChange" @on-select="onSelect" @on-select-cancel="onSelectCancel" @on-select-all="onSelectAll" @on-selection-change="onSelectionChange" @on-sort-change="onSortChange" @on-filter-change="onFilterChange" @on-row-click="onRowClick" @on-row-dblclick="onRowDblclick" @on-expand="onExpand">
         <slot name="header" slot="header"></slot>
         <slot name="footer" slot="footer"></slot>
-        <slot name="loading" slot="loading"></slot>
+        <slot name="loading" slot="loading" :v-if="loading && loadingAnimation">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50" xml:space="preserve">
+                <rect x="0" y="9.22656" width="4" height="12.5469" fill="#FF6700">
+                    <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                    <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                </rect>
+                <rect x="10" y="5.22656" width="4" height="20.5469" fill="#FF6700">
+                    <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                    <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                </rect>
+                <rect x="20" y="8.77344" width="4" height="13.4531" fill="#FF6700">
+                    <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                    <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                </rect>
+            </svg>
+        </slot>
     </Table>
     <div class="footer" v-show="showPage">
-        <Page :total="page.total" :current="page.current" :page-size="page.pageSize" :size="size" show-elevator show-sizer show-total class-name="float-right" @on-change="pageChange" @on-page-size-change="pageSizeChange" />
+        <Page :total="page.total" :current="page.current" :page-size="page.pageSize" :size="size" show-elevator show-sizer show-total class-name="float-right" :page-size-opts="[10,15,30,50,100]" @on-change="pageChange" @on-page-size-change="pageSizeChange" />
     </div>
     <a id="hrefToExportTable" style="display: none;width: 0px;height: 0px;"></a>
     <Modal v-model="modal.visible" :title="modal.title" draggable footer-hide @on-cancel="close">
@@ -33,8 +48,8 @@
 </template>
 
 <script>
-import TablesEdit from "./edit.vue";
-import TablesForm from "./form.vue";
+import TablesEdit from "./Edit";
+import TablesForm from "./Form";
 import handleBtns from "./handle-btns";
 import "./index.less";
 import {
@@ -44,10 +59,7 @@ import {
     update,
     remove,
     excute
-} from "@/api/table";
-import {
-    stringify
-} from 'querystring';
+} from "./api/table";
 import dayjs from 'dayjs';
 import {
     validPattern,
@@ -56,7 +68,7 @@ import {
 } from "./settings";
 import {
     mapObject
-} from "@/libs/util";
+} from "./libs/util";
 export default {
     name: "Tables",
     props: {
@@ -192,6 +204,8 @@ export default {
             formRules: {},
             formTempData: {},
             formTempItems: [],
+            loadingAnimation: false,
+            noDataInfo: ''
         };
     },
     computed: {
@@ -285,11 +299,15 @@ export default {
             }
             if (item.required) {
                 this.formRules[item.key] = [];
-                this.formRules[item.key].push({
+                let rule = {
                     required: true,
                     message: `${item.name}不能为空`,
                     trigger: validTrigger[item.type]
-                })
+                }
+                if (item.multiple) {
+                    this.$set(rule, 'type', 'array')
+                }
+                this.formRules[item.key].push(rule)
                 if (validPattern.hasOwnProperty(item.type)) {
                     this.formRules[item.key].push(validPattern[item.type](item))
                 }
@@ -395,13 +413,17 @@ export default {
 
                 this.page.total = this.totalCount;
             } else if (this.resource) {
+                this.noDataInfo = "数据加载中……"
+                this.loadingAnimation = true
                 getList(this.resource, this.page.current, this.page.pageSize).then(res => {
                     this.insideTableData = res.items.map((item, index) => {
                         item.initRowIndex = index;
                         return item;
                     });
                     this.page.total = res.totalCount;
-                });
+                    this.noDataInfo = this.page.total === 0 ? '暂无数据' : ''
+                    this.loadingAnimation = false
+                }).catch(error => this.noDataInfo = error);
             }
         },
         exportCsv(params) {
@@ -455,18 +477,15 @@ export default {
                 this.columns.filter(item => item.readonly || item.disabled).forEach(item => {
                     delete this.formData[item.key]
                 })
-                console.log(this.formData)
             } else {
                 this.modal.title = "新建"
                 this.formItems = this.formTempItems;
                 this.formData = Object.assign({}, this.formTempData);
-                console.log(this.formData)
             }
             this.form = TablesForm;
             this.modal.visible = true;
         },
         handleSave() {
-            console.log(this.formData)
             let method = this.formData.id > 0 ? 'put' : 'post';
             excute(this.resource, this.formData, method).then(res => {
                 this.form = null;
@@ -515,6 +534,7 @@ export default {
         this.handleTableData();
     },
     created() {
+        this.noDataInfo = this.noDataText
         this.handleColumns(this.columns);
     },
 };

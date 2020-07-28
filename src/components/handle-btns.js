@@ -8,7 +8,7 @@ const btns = {
         }
       }
     }, [
-      h('ico', {
+      h('Icons', {
         attrs: { title: '查看' },
         props: {
           type: 'icon-view',
@@ -27,7 +27,7 @@ const btns = {
         }
       }
     }, [
-      h('ico', {
+      h('Icons', {
         attrs: { title: '编辑' },
         props: {
           type: 'icon-edit',
@@ -52,9 +52,9 @@ const btns = {
         }
       }
     }, [
-      h('ico', {
+      h('Icons', {
         props: {
-          type: 'icon-delete',
+          type: 'icon-trash',
           size: 18,
           color: '#ff3311'
         },

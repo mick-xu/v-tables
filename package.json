@@ -1,6 +1,6 @@
 {
   "name": "v-tables",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "一个完整的数据表格组件，包含头部常用按钮，搜索框，底部分页，行操作等。",
   "main": "lib/v-tables.umd.min.js",
   "scripts": {
@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/mick-xu/v-tables#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "dayjs": "^1.8.29",
     "view-design": "^4.0.2"
   },
   "devDependencies": {
@@ -37,12 +39,12 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.3",
     "chai": "^4.1.2",
+    "core-js": "^3.3.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "less-loader": "^6.2.0",
     "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10",
-    "core-js": "^3.3.2",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
   }
 }

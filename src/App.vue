@@ -1,48 +1,37 @@
 <template>
 <div id="app">
-    <v-tables :columns="columns" :value="tableData" @on-edit="handleEdit" @on-delete="handleDelete"></v-tables>
+    <Tables border editable searchable :columns="columns" resource="role" @on-edit="handleEdit" @on-delete="handleDelete"></Tables>
 </div>
 </template>
 
 <script>
-import VTables from "./components";
-
 export default {
     name: 'home',
     components: {
-        VTables
+
     },
     data() {
         return {
             columns: [{
-                    title: 'ID',
-                    key: 'id',
-                    sortable: true
-                }, {
-                    title: '姓名',
-                    key: 'name',
+                    title: "名称",
+                    key: "name",
+                    width: 300,
                     editable: true,
-                    searchable: true
+                    resizable: true
                 },
                 {
-                    title: '手机号',
-                    key: 'phoneNumber',
+                    title: "别名",
+                    key: "alias",
                     editable: true,
-                    searchable: true
                 },
                 {
                     title: '操作',
                     key: 'handle',
                     width: 180,
                     align: 'center',
-                    options: ['edit', 'delete'],
+                    options: ["edit", "delete"],
                 }
             ],
-            tableData: [{
-                id: 1,
-                name: '小王',
-                phoneNumber: '15012005678'
-            }]
         }
     },
     methods: {
@@ -56,7 +45,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
 #app {
     margin: 16px;
 }

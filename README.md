@@ -66,3 +66,10 @@ methods: {
 </template>
 ```
 
+### or main.js
+```
+import Tables from 'v-tables'
+
+Vue.use(Tables, { baseUrl: 'http://api.host.com', token: 'xxx' })
+```
+
