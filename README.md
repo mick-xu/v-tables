@@ -69,6 +69,7 @@ methods: {
 ### or main.js
 ```
 import Tables from 'v-tables'
+import 'v-tables/lib/v-tables.css'
 
 Vue.use(Tables, { baseUrl: 'http://api.host.com', token: 'xxx' })
 ```
