@@ -126,13 +126,16 @@ export default {
             type: Object
         },
         noDataText: {
-            type: String
+            type: String,
+            default: '暂无数据'
         },
         noFilteredDataText: {
-            type: String
+            type: String,
+            default: ''
         },
         disabledHover: {
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         loading: {
             type: Boolean,
