@@ -43,11 +43,19 @@ const validPattern = {
             message: `请输入正确的${item.name}`,
             trigger: 'blur'
         }
+    },
+    email: (item) => {
+        return {
+            pattern: /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
+            message: `请输入正确的${item.name}`,
+            trigger: 'blur'
+        }
     }
 }
 
 const validTrigger = {
     text: 'blur',
+    password: 'blur',
     number: 'blur',
     bool: 'blur',
     binary: 'change',
