@@ -74,7 +74,7 @@ import 'v-tables/lib/v-tables.css'
 Vue.use(Tables, { baseUrl: 'http://api.host.com', token: 'xxx' })
 ```
 
-### API
+### API 在 view-design 表格的基础上的扩展
 
 #### 表格属性
 
@@ -92,10 +92,9 @@ rules       | Object | {}       | 编辑时 Form 的验证规则
 
 事件名      | 说明             | 返回值
 -----------|------------------|--------
-on-view    | 点击查看按钮时触发 | row 当前行数据
-on-edit    | 点击编辑按钮时触发 | row 当前行数据
-on-delete  | 点击删除按钮时触发 | row 当前行数据
-on-select  |                  |
+on-view    | 点击查看按钮时触发 | row：当前行数据
+on-edit    | 点击编辑按钮时触发 | row：当前行数据
+on-delete  | 点击删除按钮时触发 | row：当前行数据
 
 #### 表格 slot
 
